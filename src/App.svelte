@@ -1,5 +1,4 @@
 <script>
-  let keyboard;
   let leftPos = 0;
   let topPos = 0;
   let LeftClickDown = false;
