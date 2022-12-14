@@ -1,6 +1,36 @@
-<div class="hieroglyphs-keyboard">
-  <div class="title-bar"><b>Hieroglyphs Keyboard</b></div>
+<script>
+  let keyboard;
+  let leftPos = 0;
+  let topPos = 0;
+  let LeftClickDown = false;
+
+  const handleMouseDown = () => {
+    LeftClickDown = true;
+  };
+
+  const handleMouseUp = () => {
+    LeftClickDown = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (LeftClickDown) {
+      leftPos += e.movementX;
+      topPos += e.movementY;
+    }
+  };
+</script>
+
+<div class="hieroglyphs-keyboard" style="left: {leftPos}px;top: {topPos}px;">
+  <div
+    class="title-bar"
+    on:mousedown={handleMouseDown}
+    on:mousemove={handleMouseMove}
+  >
+    <b>Hieroglyphs Keyboard</b>
+  </div>
 </div>
+
+<svelte:window on:mouseup={handleMouseUp} />
 
 <style>
   .hieroglyphs-keyboard {
